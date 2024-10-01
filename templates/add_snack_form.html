@@ -12,18 +12,13 @@
   <h1>New Snack</h1>
   <form method="POST">
     {{ form.hidden_tag() }}
-    {% for field in form if field.widget.input_type != 'hidden'%}
-    <p>
-      {{field.label}}
-      {{field}}
-
-      {% for err in field.errors %}
-      {{err}}
-      {% endfor %}
-    </p>
+    {% for field in form
+      if field.widget.input_type != 'hidden' %}
+      <p>
+        {{field.label}}
+        {{field}}
+      </p>
     {% endfor %}
-    <button>Submit</button>
+    <button type="submit">Add Snack</button>
   </form>
-</body>
-
 </html>

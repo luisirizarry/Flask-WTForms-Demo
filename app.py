@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template,  redirect, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db,  connect_db, Department, Employee, get_directory, get_directory_join, get_directory_join_class, get_directory_all_join, Project, EmployeeProject
-from forms import AddSnackForm, EmployeeForm
+from forms import AddSnackForm
 
 app = Flask(__name__)
 
@@ -30,15 +30,14 @@ def list_phones():
 
 @app.route('/snacks/new', methods=["GET", "POST"])
 def add_snack():
-    """Renders snack form (GET) or handles snack form submission (POST)"""
     form = AddSnackForm()
     if form.validate_on_submit():
         name = form.name.data
         price = form.price.data
-        flash(f"Created new snack: name is {name}, price is ${price}")
+        flash(f"Added {name} at ${price}")
         return redirect('/')
     else:
-        return render_template("add_snack_form.html", form=form)
+        return render_template('add_snack_form.html', form=form)
 
 
 @app.route('/employees/new', methods=["GET", "POST"])
