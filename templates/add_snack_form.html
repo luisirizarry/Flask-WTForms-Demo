@@ -17,6 +17,10 @@
       <p>
         {{field.label}}
         {{field}}
+
+        {% for err in field.errors %}
+        <span style="color: red;">{{err}}</span>
+        {% endfor %}
       </p>
     {% endfor %}
     <button type="submit">Add Snack</button>
