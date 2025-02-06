@@ -20,8 +20,8 @@ class AddSnackForm(FlaskForm):
     # category = RadioField("Category", choices=[('appetizer', 'Appetizer'), ('entree', 'Entree'), ('dessert', 'Dessert')])
     category = SelectField("Category", choices=[('appetizer', 'Appetizer'), ('entree', 'Entree'), ('dessert', 'Dessert')])
 
-class NewEmployeeForm(FlaskForm):
+class EmployeeForm(FlaskForm):
 
-    name = StringField("Employee Name")
+    name = StringField("Employee Name", validators=[InputRequired(message="Name is required")])
     state = SelectField("State", choices=[(state, state) for state in states])
     dept_code = SelectField("Department Code")
